@@ -1,0 +1,658 @@
+/* Global Variables */
+:root {
+  --fluent-version: "1.1.7";
+  --transition: cubic-bezier(0, 0, 0, 1);
+  --accent-text: #000;
+  --accent-solid: var(--accent);
+
+  /* Pill Styling */
+  --pill-width: 4px;
+  --pill-height: 16px;
+  --pill-transition: scale 0.15s var(--transition);
+  --pill-unread-color: hsl(var(--dark-background-hue, 0) var(--dark-background-saturation, 0%) 60%); /*Default Unread Color*/
+  --pill-hovered-color: #fff;
+  --pill-active-color: var(--accent);
+
+  /* Rounded Corners */
+  --btn-radius: 6px;
+  --rounded-high: 8px;
+  --rounded: 4px;
+
+  /* Heights */
+  --toolbar-height: 64px;
+  --bottombar-height: 64px;
+  --banner-height: 155px;
+
+  /* Fonts */
+  --font-weight-light: 300;
+  --font-weight-semilight: 350;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size: 16px;
+  --font-size-md: 18px;
+  --font-size-lg: 20px;
+  --font-size-xl: 28px;
+  --font-size-2xl: 40px;
+
+  /* Line Heights */
+  --line-height: 16px;
+  --line-height-md: 20px;
+  --line-height-lg: 24px;
+  --line-height-xl: 28px;
+  --line-height-2xl: 36px;
+  --line-height-3xl: 52px;
+
+  --font-primary: "Segoe UI", sans-serif;
+
+  /* Shadows */
+  --shadow-flyout-x: 0px; /* Horizontal offset for the shadow */
+  --shadow-flyout-y: 8px; /* Vertical offset for the shadow */
+  --shadow-flyout-blur: 16px;
+  --shadow-flyout-color: hsla(0 0% 0% / 0.14);
+  --shadow-flyout: var(--shadow-flyout-x) var(--shadow-flyout-y) var(--shadow-flyout-blur) var(--shadow-flyout-color);
+  --shadow-dialog: 0px 32px 64px hsla(0 0% 0% / 0.188) 0px 2px 21px hsla(0 0% 0% / 0.147);
+
+  /* Cursors */
+  --cursor: default;
+
+  /* Chat Colors */
+  --chat-mention-colour: var(--accent);
+  --chat-padding-y: 12px;
+  --chat-padding-x: 16px;
+  --chat-spacing-y: 32px;
+  --chat-spacing-x: 24px;
+
+  /* Server List Sizes */
+  --server-size: 48px;
+  --server-icon-size: 28px;
+  --server-container: calc(var(--server-size) + 16px);
+  --server-bg-hover: inset 0 0 0 100vmax var(--server-bg), inset 1px 0 0 var(--btn-border-x), inset 0 1px 0 var(--btn-border-t), inset -1px 0 var(--btn-border-x), inset 0 -1px 0 var(--btn-border-b);
+  --server-icon-shape: 50%;
+  --server-folder-icon-shape: 2px;
+
+  /* Channel List */
+  --channel-padding: 8px;
+
+  /* Profile */
+  --profile-modal-height: 700px;
+  --profile-modal-width: 800px;
+  --profile-premium-text-shadow: 0 2px 5px hsl(0 0% 0% / 0.75);
+
+  /* Discord Colors */
+  --discord-pink: 302 calc(var(--saturation-factor, 1) * 100%) 72.5%;
+  --discord-red: 359 calc(var(--saturation-factor, 1) * 82.6%) 59.4%;
+  --discord-grey: 217 8% 34%;
+
+  /* Semantic Text Colors */
+  --text-normal: var(--text-primary);
+  --text-muted: var(--text-tertiary);
+  --interactive-muted: var(--text-quaternary);
+  --text-link: var(--accent);
+
+  /*Members Width*/
+  --members-width: 240px;
+  /*Popout Width*/
+  --popout-width: 650px;
+
+}
+
+/* Dark Theme */
+.theme-dark,
+html.theme-dark #app-mount .theme-light .root__49fc1 {
+  --dark-bg-h: var(--dark-background-hue, 0);
+  --dark-bg-s: var(--dark-background-saturation, 0%);
+
+  --bg-main: hsl(var(--dark-bg-h) var(--dark-bg-s) 13%);
+  --bg-alt: hsl(var(--dark-bg-h) var(--dark-bg-s) 15%);
+  --bg-content: hsl(var(--dark-bg-h) var(--dark-bg-s) 17%);
+  --bg-content-alt: hsl(var(--dark-bg-h) var(--dark-bg-s) 18%);
+  --bg-transparent: hsl(var(--dark-bg-h) var(--dark-bg-s) 40% / 0.25);
+  --bg-transparent-hover: hsl(var(--dark-bg-h) var(--dark-bg-s) 40% / 0.35);
+  --bg-transparent-active: hsl(var(--dark-bg-h) var(--dark-bg-s) 40% / 0.4);
+  --bg-interactive: hsl(var(--dark-bg-h) var(--dark-bg-s) 18%);
+  --bg-interactive-high: hsl(var(--dark-bg-h) var(--dark-bg-s) 20%);
+  --bg-interactive-hover: hsl(var(--dark-bg-h) var(--dark-bg-s) 16%);
+  --bg-interactive-high-hover: hsl(var(--dark-bg-h) var(--dark-bg-s) 18%);
+  --bg-high: hsl(var(--dark-bg-h) var(--dark-bg-s) 20%);
+  --bg-higher: hsl(var(--dark-bg-h) var(--dark-bg-s) 23%);
+  --bg-highest: hsl(var(--dark-bg-h) var(--dark-bg-s) 28%);
+  --bg-menu: hsl(var(--dark-bg-h) var(--dark-bg-s) 17%);
+  --bg-menu-item: hsl(var(--dark-bg-h) var(--dark-bg-s) 22%);
+  --bg-menu-item-hover: hsl(var(--dark-bg-h) var(--dark-bg-s) 20%);
+
+  --chat-bubble-bg: hsl(var(--dark-bg-h) var(--dark-bg-s) 18%);
+  --chat-mention-bubble: hsl(var(--dark-bg-h) var(--dark-bg-s) 100% / 0.05);
+
+  --border: hsl(var(--dark-bg-h) var(--dark-bg-s) 11%);
+  --border-mid: hsl(var(--dark-bg-h) var(--dark-bg-s) 20%);
+  --border-high: hsl(var(--dark-bg-h) var(--dark-bg-s) 23%);
+
+  --btn-bg: hsl(var(--dark-bg-h) var(--dark-bg-s) 40% / 0.2);
+  --btn-bg-hover: hsl(var(--dark-bg-h) var(--dark-bg-s) 40% / 0.25);
+  --btn-bg-active: hsl(var(--dark-bg-h) var(--dark-bg-s) 40% / 0.1);
+  --btn-border-t: hsl(var(--dark-bg-h) var(--dark-bg-s) 40% / 0.3);
+  --btn-border-x: hsl(var(--dark-bg-h) var(--dark-bg-s) 40% / 0.1);
+  --btn-border-b: hsl(var(--dark-bg-h) var(--dark-bg-s) 40% / 0.1);
+  --btn-border-active: hsl(var(--dark-bg-h) var(--dark-bg-s) 40% / 0.2);
+
+  --scrollbar-background: hsl(var(--dark-bg-h) var(--dark-bg-s) 50%);
+
+  --server-bg: hsl(var(--dark-bg-h) var(--dark-bg-s) 50% / 0.2);
+  --folder-bg: var(--server-bg);
+
+  --textbox-bg: hsl(var(--dark-bg-h) var(--dark-bg-s) 18%);
+  --textbox-bg-high: hsl(var(--dark-bg-h) var(--dark-bg-s) 20%);
+  --textbox-bg-hover: hsl(var(--dark-bg-h) var(--dark-bg-s) 20%);
+  --textbox-bg-high-hover: hsl(var(--dark-bg-h) var(--dark-bg-s) 22%);
+  --textbox-bg-active: hsl(var(--dark-bg-h) var(--dark-bg-s) 13%);
+  --textbox-bg-high-active: hsl(var(--dark-bg-h) var(--dark-bg-s) 16%);
+  --textbox-border: hsl(var(--dark-bg-h) var(--dark-bg-s) 19%);
+  --textbox-underline: hsl(var(--dark-bg-h) var(--dark-bg-s) 60%);
+
+  --switch-border: hsl(var(--dark-bg-h) var(--dark-bg-s) 94% / 54.42%);
+
+  --text-primary: hsl(var(--dark-bg-h) var(--dark-bg-s) 90%);
+  --text-secondary: hsl(var(--dark-bg-h) var(--dark-bg-s) 85% / 75%);
+  --text-tertiary: hsl(var(--dark-bg-h) var(--dark-bg-s) 80% / 55%);
+  --text-quaternary: hsl(var(--dark-bg-h) var(--dark-bg-s) 75% / 35%);
+
+}
+
+/* Light Theme */
+.theme-light,
+html.theme-light #app-mount .theme-light .root__49fc1 {
+  --bg-main: #f3f3f3;
+  --bg-alt: #fafafa;
+  --bg-content: #fbfbfb;
+  --bg-content-alt: #f6f6f6;
+  --bg-transparent: hsl(0 0% 40% / 0.25);
+  --bg-transparent-hover: hsl(0 0% 40% / 0.35);
+  --bg-transparent-active: hsl(0 0% 40% / 0.4);
+  --bg-interactive: #eaeaea;
+  --bg-interactive-hover: #ededed;
+  --bg-interactive-high: #eeeeee;
+  --bg-interactive-high-hover: #f1f1f1;
+  --bg-high: #fff;
+  --bg-higher: #fff;
+  --bg-highest: #fff;
+  --bg-menu: #f9f9f9;
+  --bg-menu-item: #f0f0f0;
+  --bg-menu-item-hover: #f3f3f3;
+
+  --chat-bubble-bg: var(--bg-main);
+  --chat-mention-bubble: hsl(0 0% 0% / 0.05);
+
+  --border: #e5e5e5;
+  --border-mid: #e8e8e8;
+  --border-high: #ececec;
+
+  --btn-bg: hsl(0 0% 100%);
+  --btn-bg-hover: hsl(0 0% 0% / 0.005);
+  --btn-bg-active: hsl(0 0% 100% / 0.005);
+  --btn-border-t: hsl(0 0% 0% / 0.06);
+  --btn-border-x: hsl(0 0% 0% / 0.06);
+  --btn-border-b: hsl(0 0% 0% / 0.15);
+  --btn-border-active: hsl(0 0% 0% / 0.15);
+
+  --scrollbar-background: hsl(0 0% 50%);
+
+  --server-bg: hsl(0 0% 0% / 0.08);
+  --folder-bg: var(--server-bg);
+
+  --textbox-bg: #fbfbfb;
+  --textbox-bg-hover: #f6f6f6;
+  --textbox-bg-active: #f6f6f6;
+  --textbox-border: #e5e5e5;
+  --textbox-underline: #868686;
+
+  --switch-border: hsl(0 0% 0% / 54.42%);
+
+  --text-primary: hsl(0 0% 0% / 100%);
+  --text-secondary: hsl(0 0% 0% / 75%);
+  --text-tertiary: hsl(0 0% 0% / 55%);
+
+}
+
+/* Fonts and Basic Resets */
+
+@font-face {
+  font-family: "Segoe UI";
+  src: local("Segoe UI Light"), url("https://discordstyles.github.io/Fluent/fonts/light.woff2") format("woff2");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Segoe UI";
+  src: local("Segoe UI Semilight"), url("https://discordstyles.github.io/Fluent/fonts/semilight.woff2") format("woff2");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Segoe UI";
+  src: local("Segoe UI"), url("https://discordstyles.github.io/Fluent/fonts/normal.woff2") format("woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Segoe UI";
+  src: local("Segoe UI Semibold"), url("https://discordstyles.github.io/Fluent/fonts/semibold.woff2") format("woff2");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Segoe UI";
+  src: local("Segoe UI Bold"), url("https://discordstyles.github.io/Fluent/fonts/bold.woff2") format("woff2");
+  font-weight: 700;
+}
+
+html,
+span:not([class*=spinner_], [class*=spinnerItem]) {
+  backface-visibility: hidden;
+}
+
+body,
+#app-mount,
+.app_de4237 {
+  background: var(--bg-main);
+  font-family: var(--font-primary);
+}
+
+.bg__12180 {
+  background: transparent;
+}
+
+[class*=clickable_],
+[class*=cursorPointer_],
+[class*=selectable_] {
+  cursor: var(--cursor) !important;
+}
+
+/* Base Styling */
+
+.base_c0676e {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border-high);
+  border-left: 1px solid var(--border-high);
+  border-top-left-radius: var(--rounded);
+  overflow: visible;
+}
+
+.content__76dcf {
+  width: calc(100vw - var(--server-container));
+}
+
+/* Fluent Version Text (Hidden in official build) */
+.layer_f7d46a :not(.baseLayer__2b890) .info__755e1 > .line_cdcacc:first-child::before {
+  display: block;
+  content: "Fluent v" var(--fluent-version);
+  text-transform: none;
+}
+
+.layer_f7d46a {
+  transform: scale(1) !important;
+  z-index: 1;
+}
+
+.layer_f7d46a.baseLayer__2b890 {
+  transform: none !important;
+  opacity: 1 !important;
+  padding-top: 0 !important;
+  transition: none !important;
+}
+
+/* Tooltip */
+#app-mount .tooltip-14MtrL {
+  box-shadow: var(--shadow-flyout);
+  font-size: var(--font-size-sm);
+  border-radius: var(--rounded);
+}
+
+#app-mount .tooltipContent_adb6d5 {
+  padding: 6px 8px;
+  font-weight: var(--font-weight-semibold);
+}
+
+#app-mount .tooltipPointer_f7411c {
+  border-top-color: var(--border-high);
+}
+
+#app-mount .tooltipPrimary__51b23 {
+  border: 1px solid var(--bg-highest);
+  background: var(--bg-high);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-background) !important;
+}
+
+.chatContent_f75fb0 .scroller__36d07::-webkit-scrollbar,
+.peopleList__5ec2f::-webkit-scrollbar,
+.scroller_ac6cb0::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.chatContent_f75fb0 .scroller__36d07::-webkit-scrollbar-track,
+.peopleList__5ec2f::-webkit-scrollbar-track,
+.scroller_ac6cb0::-webkit-scrollbar-track {
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+.chatContent_f75fb0 .scroller__36d07::-webkit-scrollbar-thumb,
+.peopleList__5ec2f::-webkit-scrollbar-thumb,
+.scroller_ac6cb0::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-background);
+}
+
+.members_c8ffbb::-webkit-scrollbar,
+.container__2637a .scroller__629e4::-webkit-scrollbar,
+.sidebarRegionScroller__23e6b::-webkit-scrollbar,
+.scroller__99e7c::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+/* Toolbar (Top) */
+#app-mount .container__26baa {
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border-mid);
+  height: var(--toolbar-height);
+  padding: 0 16px;
+}
+
+#app-mount .container__26baa::before {
+  content: none;
+}
+
+#app-mount .children_cde9af {
+  margin-right: 16px;
+}
+
+#app-mount .children_cde9af > .iconWrapper_de6cd1 {
+  margin: 0 16px 0 0;
+}
+
+#app-mount .children_cde9af .divider_bdb894 {
+  display: none;
+}
+
+#app-mount .children_cde9af::after {
+  content: none;
+}
+
+#app-mount .toolbar__62fb5 {
+  gap: 16px;
+}
+
+#app-mount .toolbar__62fb5 .iconWrapper_de6cd1 {
+  margin: 0;
+}
+
+#app-mount .toolbar__62fb5 a[href="https://support.discord.com"] {
+  display: none;
+}
+
+/* Search */
+#app-mount .search__07df0 {
+  border-radius: var(--rounded);
+  overflow: hidden;
+  margin: 0 0 0 8px;
+  order: 1;
+}
+
+#app-mount .searchBar__5a20a {
+  background: var(--textbox-bg);
+  border: 1px solid var(--textbox-border);
+  height: 30px;
+  padding: 0;
+  width: calc(var(--members-width) - 32px);
+}
+
+#app-mount .searchBar__5a20a .DraftEditor-root {
+  padding-top: 4px;
+}
+
+#app-mount .searchBar__5a20a .public-DraftEditor-content,
+#app-mount .searchBar__5a20a .public-DraftEditorPlaceholder-root {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#app-mount .searchBar__5a20a .icon__53a5c {
+  height: 28px;
+}
+
+#app-mount .searchBar__5a20a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--textbox-underline);
+}
+
+#app-mount .searchBar__5a20a:hover {
+  background: var(--textbox-bg-hover);
+}
+
+#app-mount .searchBar__5a20a:focus-within {
+  background: var(--bg-alt);
+}
+
+#app-mount .searchBar__5a20a:focus-within::before {
+  height: 2px;
+  background: var(--accent);
+}
+
+/* Tabs */
+#app-mount [class*=tabBar_] {
+  display: flex;
+  height: auto;
+  gap: 0;
+}
+
+#app-mount [class*=tabBar_] [class*=item_],
+#app-mount [class*=tabBar_] [class*=tabBarItem_] {
+  margin: 0;
+  border: none;
+  padding: 10px 12px;
+  height: auto;
+  border-radius: var(--btn-radius);
+  cursor: var(--cursor);
+  background: transparent !important;
+  color: var(--text-secondary) !important;
+  text-transform: none;
+  font-weight: var(--font-weight-regular);
+}
+
+#app-mount [class*=tabBar_] [class*=item_]::before,
+#app-mount [class*=tabBar_] [class*=tabBarItem_]::before {
+  content: "";
+  height: 2px;
+  width: 0%;
+  display: block;
+  opacity: 0;
+  border-radius: 30px;
+  background: var(--accent);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.15s var(--transition), width 0.15s var(--transition);
+}
+
+#app-mount [class*=tabBar_] [class*=item_]:hover,
+#app-mount [class*=tabBar_] [class*=tabBarItem_]:hover {
+  color: var(--text-primary) !important;
+}
+
+#app-mount [class*=tabBar_] [class*=item_][aria-selected=true],
+#app-mount [class*=tabBar_] [class*=tabBarItem_][aria-selected=true] {
+  color: var(--text-primary) !important;
+}
+
+#app-mount [class*=tabBar_] [class*=item_][aria-selected=true]::before,
+#app-mount [class*=tabBar_] [class*=tabBarItem_][aria-selected=true]::before {
+  width: 40%;
+  opacity: 1;
+}
+
+/* Server List */
+#app-mount .guilds_c48ade {
+  width: var(--server-container);
+  background: transparent;
+}
+
+#app-mount .guilds_c48ade.hidden_ef3116 {
+  display: none;
+}
+
+#app-mount .guilds_c48ade.hidden_ef3116 + .base_c48ade {
+  border: none;
+}
+
+#app-mount .scroller_ef3116 {
+  background: var(--bg-main);
+  padding-top: 0;
+}
+
+#app-mount .scroller_ef3116 .tutorialContainer__1f388 + div:not([class]) {
+  height: var(--server-size) !important;
+  margin-bottom: 4px;
+}
+
+#app-mount .gradient_f8ec41 {
+  background: linear-gradient(to top, var(--bg-main) 0, rgba(0, 0, 0, 0) 100%);
+  top: -8px;
+}
+
+#app-mount .footer__214dc {
+  background: transparent;
+}
+
+/* Server Pill Indicator */
+#app-mount .guilds_c48ade [class*=pill] {
+  width: 4px;
+  margin-left: 0;
+  left: calc(var(--server-container) / 2 - var(--server-size) / 2);
+  z-index: 1;
+  height: var(--server-size);
+}
+
+#app-mount .guilds_c48ade [class*=pill] span {
+  height: var(--pill-height) !important;
+  width: 100% !important;
+  transform: scale(0, 1) !important;
+  transition: var(--pill-transition) !important;
+  margin-left: 0;
+  border-radius: var(--rounded-high);
+}
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 0"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 1"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 2"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 3"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 4"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 5"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 6"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 7"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 8"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 9"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 10"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 11"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 12"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 13"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 14"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 15"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 16"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 17"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 18"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 19"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 20"]{
+  transform: scale(1, 0.5) !important;
+  background: var(--pill-unread-color);
+}
+
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 21"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 22"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 23"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 24"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 25"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 26"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 27"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 28"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 29"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 30"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 31"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 32"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 33"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 34"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 35"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 36"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 37"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 38"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 39"],
+#app-mount .guilds_c48ade [class*=pill] span[style*="height: 40"]
+{
+  transform: scale(1, 1) !important;
+  background: var(--pill-active-color);
+}
+
+#app-mount .listItem__650eb {
+  margin: 0 0 4px;
+  width: var(--server-container);
+  position: relative;
+}
+
+#app-mount .listItem__650eb foreignObject {
+  -webkit-mask: none;
+          mask: none;
+  border-radius: var(--rounded);
+  box-sizing: border-box;
+}
+
+#app-mount .wrapper__6e9f8 {
+  border-radius: var(--rounded);
+  cursor: var(--cursor);
+  width: var(--server-size);
+  height: var(--server-size);
+}
+
+#app-mount .wrapper_cc5dd2 {
+  cursor: var(--cursor);
+}
+
+#app-mount .wrapper__6e9f8 {
+  position: relative;
+  transition: box-shadow 0.15s var(--transition);
+}
+
+#app-mount .wrapper__6e9f8:hover, #app-mount .wrapper__6e9f8.selected__6e9f8 {
+  box-shadow: var(--server-bg-hover);
+}
+
+#app-mount .svg-2zuE5p {
+  border-radius: 50%;
+  box-sizing: border-box;
+  width: var(--server-size);
+  height: var(--server-size);
+}
+
+#app-mount .svg-2zuE5p foreignObject {
+  width: 100%;
+  height: 100%;
+}
+
+#app-mount .icon__6e9f8,
+#app-mount .childWrapperNoHoverBg__6e9f8 {
+  width: var
